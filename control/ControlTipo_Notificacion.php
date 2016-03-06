@@ -15,6 +15,10 @@ class ControlTipo_Notificacion {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarTipo_NotificacionxCod($codigo) {
+        return $this->objD->listarTipo_NotificacionxCod($codigo);
+    }    
 
     public function listarTipo_Notificacion() {
         return $this->objD->listarTipo_Notificacion();

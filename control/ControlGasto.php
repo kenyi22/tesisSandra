@@ -16,6 +16,10 @@ class ControlGasto {
         $this->objD = new daoNegocio();
     }
 
+    public function listarGastoxCod($codigo) {
+        return $this->objD->listarGastoxCod($codigo);
+    }
+    
     public function listarGasto() {
         return $this->objD->listarGasto();
     }

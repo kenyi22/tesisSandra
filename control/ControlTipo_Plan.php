@@ -15,6 +15,10 @@ class ControlTipo_Plan {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarTipo_PlanxCod($codigo) {
+        return $this->objD->listarTipo_PlanxCod($codigo);
+    }
 
     public function listarTipo_Plan() {
         return $this->objD->listarTipo_Plan();

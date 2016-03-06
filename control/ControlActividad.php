@@ -16,6 +16,10 @@ class ControlActividad {
    function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarActividadxCod($codigo) {
+        return $this->objD->listarActividadxCod($codigo);
+    }
 
     public function listarActividad() {
         return $this->objD->listarActividad();

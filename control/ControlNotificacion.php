@@ -15,6 +15,10 @@ class ControlNotificacion {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarNotificacionxCod($codigo) {
+        return $this->objD->listarNotificacionxCod($codigo);
+    }
 
     public function listarNotificacion() {
         return $this->objD->listarNotificacion();

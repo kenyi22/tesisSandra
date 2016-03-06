@@ -15,6 +15,10 @@ class ControlPersona {
    function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarPersonaxCod($codigo) {
+        return $this->objD-listarPersonaxCod($codigo);
+    }
 
     public function listarPersona() {
         return $this->objD->listarPersona();

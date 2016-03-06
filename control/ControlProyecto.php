@@ -15,6 +15,10 @@ class ControlProyecto {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarProyectoxCod($codigo) {
+        return $this->objD->listarProyectoxCod($codigo);
+    }
 
     public function listarProyecto() {
         return $this->objD->listarlProyecto();

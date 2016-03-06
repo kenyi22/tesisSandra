@@ -15,6 +15,10 @@ class ControlPlanes_Proyecto {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarPlanes_ProyectoxCod($codigo)  {
+        return $this->objD->listarPlanes_ProyectoxCod($codigo) ;
+    }
 
     public function listarPlanes_Proyecto() {
         return $this->objD->listarPlanes_Proyecto();

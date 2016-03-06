@@ -16,6 +16,10 @@ class ControlSeguimiento_Actividades {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarSeguimiento_ActividadesxCod($codigo) {
+        return $this->objD->listarSeguimiento_ActividadesxCod($codigo);
+    }
 
     public function listarSeguimiento_Actividades() {
         return $this->objD->listarSeguimiento_Actividades();

@@ -15,8 +15,12 @@ class ControlTipo_Gasto {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarTipo_GastoxCod($codigo) {
+        return $this->objD->listarTipo_GastoxCod($codigo);
+    }
 
-    public function listarActividad() {
+    public function listarTipo_Gasto() {
         return $this->objD->listarTipo_Gasto();
     }
     

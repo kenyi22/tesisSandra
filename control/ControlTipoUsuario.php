@@ -15,6 +15,10 @@ class ControlTipoUsuario {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarTipoUsuarioxCod($codigo) {
+        return $this->objD->listarTipoUsuarioxCod($codigo);
+    }
 
     public function listarTipoUsuario() {
         return $this->objD->listarTipoUsuario();

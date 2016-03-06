@@ -16,6 +16,10 @@ class ControlActividad_Requerimiento {
         $this->objD = new daoNegocio();
     }
 
+    public function listarActividadxCod($codigo) {
+        return $this->objD->listarActividadxCod($codigo);
+    }
+    
     public function listarActividad_Requerimiento() {
         return $this->objD->listarActividad_Requerimiento();
     }

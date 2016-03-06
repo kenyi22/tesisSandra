@@ -15,6 +15,10 @@ class ControlRequerimiento {
     function __construct() {
         $this->objD = new daoNegocio();
     }
+    
+    public function listarRequerimientoxCod($codigo) {
+        return $this->objD->listarRequerimientoxCod($codigo);
+    }
 
     public function listarRequerimiento() {
         return $this->objD->listarRequerimiento();
