@@ -12,6 +12,21 @@
  * @author kenyi
  */
 class DaoActividad {
+    
+    public function listarActividadxCod($codigo) {
+        try {
+            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $resul = mysql_query($sql, $this->con);
+            $lista = array();
+            while ($re = mysql_fetch_row($resul)) {
+                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $lista[] = $objRol;
+            }
+            return $lista;
+        } catch (Exception $ex) {
+            echo "error en el sistema $ex";
+        }
+    }
 
     public function listarActividad() {
         try {
