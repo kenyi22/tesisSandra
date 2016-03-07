@@ -12,10 +12,10 @@
  * @author kenyi
  */
 class DaoRequerimiento {
-    
+
     public function listarRequerimientoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_requerimiento where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -27,10 +27,10 @@ class DaoRequerimiento {
             echo "error en el sistema $ex";
         }
     }
-    
+
     public function listarRequerimiento() {
-                                     try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+        try {
+            $sql = "SELECT * FROM tbl_requerimiento order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -40,12 +40,12 @@ class DaoRequerimiento {
             return $lista;
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
-        }  
+        }
     }
-    
+
     public function codAutRequerimiento() {
-                                     try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+        try {
+            $sql = "SELECT COUNT(*) +1 FROM tbl_requerimiento";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -61,13 +61,13 @@ class DaoRequerimiento {
             return $lista;
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
-        } 
+        }
     }
-    
-    public function registrarRequerimiento($ID_REQUERIMIENTO,$ID_PROYECTO,$NOMBRE,$DESCRIPCION,$ESTADO) {
-                                        try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+
+    public function registrarRequerimiento($ID_REQUERIMIENTO, $ID_PROYECTO, $NOMBRE, $DESCRIPCION, $ESTADO) {
+        try {
+            $sql = " INSERT INTO tbl_requerimiento (Id_Requerimiento,Nombre,Descripción,Estado,Id_Proyecto) "
+                    . "VALUES ('$ID_REQUERIMIENTO','$ID_PROYECTO','$NOMBRE','$DESCRIPCION','$ESTADO')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -75,10 +75,10 @@ class DaoRequerimiento {
         }
         return $resul;
     }
-    
-    public function actualizarRequerimiento($ID_REQUERIMIENTO,$ID_PROYECTO,$NOMBRE,$DESCRIPCION,$ESTADO) {
-                                     try {
-            $sql = "UPDATE perxproxpet SET "
+
+    public function actualizarRequerimiento($ID_REQUERIMIENTO, $ID_PROYECTO, $NOMBRE, $DESCRIPCION, $ESTADO) {
+        try {
+            $sql = "UPDATE tbl_requerimiento SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
@@ -87,6 +87,7 @@ class DaoRequerimiento {
             echo "error en el sistema $ex";
             $resul = 'false';
         }
-        return $resul;  
+        return $resul;
     }
+
 }

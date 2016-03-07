@@ -15,7 +15,7 @@ class DaoTipo_Gasto {
     
     public function listarTipo_GastoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_tipo_gasto where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoTipo_Gasto {
     
     public function listarActividad() {
                                          try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_tipo_gasto order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoTipo_Gasto {
     
     public function codAutTipo_Gasto() {
                                                try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_tipo_gasto";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoTipo_Gasto {
     
     public function registrarTipo_Gasto($ID_TIPO_GASTO,$NOMBRE) {
                                               try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_tipo_gasto (Id_Tipo_Gasto,Nombre) "
+                    . "VALUES ('$ID_TIPO_GASTO','$NOMBRE')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,7 +78,7 @@ class DaoTipo_Gasto {
     
     public function actualizarTipo_Gasto($ID_TIPO_GASTO,$NOMBRE) {
                                         try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_tipo_gasto SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

@@ -15,7 +15,7 @@ class DaoPlanes_Proyecto {
     
     public function listarPlanes_ProyectoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_planes_proyecto where Id_Planes_Proyecto='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -29,7 +29,7 @@ class DaoPlanes_Proyecto {
     }
     public function listarPlanes_Proyecto() {
                       try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_planes_proyecto order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -44,7 +44,7 @@ class DaoPlanes_Proyecto {
     
     public function codAutPlanes_Proyecto() {
                      try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_planes_proyecto";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -65,8 +65,8 @@ class DaoPlanes_Proyecto {
     
     public function registrarPlanes_Proyecto($ID_PLANES_PROYECTO,$ID_TIPO_PLAN,$ID_PROYECTO) {
                         try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_planes_proyecto (Id_Planes_Proyecto,Estado,Id_Tipo_Plan,Id_Proyecto) "
+                    . "VALUES ('$ID_PLANES_PROYECTO','$ID_TIPO_PLAN','$ID_PROYECTO')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -77,7 +77,7 @@ class DaoPlanes_Proyecto {
     
     public function actualizarPlanes_Proyecto($ID_PLANES_PROYECTO,$ID_TIPO_PLAN,$ID_PROYECTO) {
                       try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_planes_proyecto SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

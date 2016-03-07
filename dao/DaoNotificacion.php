@@ -15,7 +15,7 @@ class DaoNotificacion {
     
     public function listarNotificacionxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_notificación where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -31,7 +31,7 @@ class DaoNotificacion {
     
     public function listarNotificacion() {
         try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_notificación order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -46,7 +46,7 @@ class DaoNotificacion {
     
     public function codAutNotificacion() {
         try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_notificación";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -67,7 +67,7 @@ class DaoNotificacion {
     
     public function registrarNotificacion($ID_NOTIFICACION,$ID_TIPO_NOTIFICACION,$ID_PROYECTO,$ESTADO,$LEIDO,$FECHA,$HORA) {
         try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
+            $sql = " INSERT INTO tbl_notificación (Id_Notificación,Estado,Leido,Fecha,Hora,Id_Tipo_Notificación,Id_Proyecto) "
                     . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
@@ -79,7 +79,7 @@ class DaoNotificacion {
     
     public function actualizarNotificacion($ID_NOTIFICACION,$ID_TIPO_NOTIFICACION,$ID_PROYECTO,$ESTADO,$LEIDO,$FECHA,$HORA) {
         try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_notificación SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

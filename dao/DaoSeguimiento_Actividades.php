@@ -15,7 +15,7 @@ class DaoSeguimiento_Actividades {
     
     public function listarSeguimiento_ActividadesxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_seguimiento_de_actividades where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoSeguimiento_Actividades {
     
     public function listarSeguimiento_Actividades() {
                                  try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_seguimiento_de_actividades order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoSeguimiento_Actividades {
 
     public function codAutSeguimiento_Actividades() {
                                         try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_seguimiento_de_actividades";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,7 +66,7 @@ class DaoSeguimiento_Actividades {
 
     public function registrarSeguimiento_Actividades($ID_SEGUIMIENTO,$ID_ACTIVIDAD,$ID_USUARIO,$ACCION,$PORCENTAJE,$FECHA,$HORA,$DETALLE) {
                                                 try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
+            $sql = " INSERT INTO tbl_seguimiento_de_actividades (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
                     . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
@@ -78,7 +78,7 @@ class DaoSeguimiento_Actividades {
 
     public function actualizarSeguimiento_Actividades($ID_SEGUIMIENTO,$ID_ACTIVIDAD,$ID_USUARIO,$ACCION,$PORCENTAJE,$FECHA,$HORA,$DETALLE) {
                                              try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_seguimiento_de_actividades SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

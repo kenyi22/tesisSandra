@@ -14,7 +14,7 @@
 class daoActividad_Requerimiento {
     public function listarActividadxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_actividad_x_requerimiento where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -29,7 +29,7 @@ class daoActividad_Requerimiento {
 
     public function listarActividad() {
         try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_actividad_x_requerimiento order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -44,7 +44,7 @@ class daoActividad_Requerimiento {
 
     public function codAutActividad() {
         try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_actividad_x_requerimiento";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -65,7 +65,7 @@ class daoActividad_Requerimiento {
 
     public function registrarActividad($ID_ACTIVIDAD, $ID_USUARIO, $NOMBRE, $DESCRIPCION, $FECHA_HORA_INICIO, $COSTO, $FECHA_REGISTRO, $ESTADO, $PRIORIDAD, $COMPLEJIDAD) {
         try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
+            $sql = " INSERT INTO tbl_actividad_x_requerimiento (Id_Actividades_Requerimientos,Estado) "
                     . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
@@ -80,7 +80,7 @@ class daoActividad_Requerimiento {
             $sql = "UPDATE perxproxpet SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
-                    . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
+                    . "estado='$estado' WHERE tbl_actividad_x_requerimiento='$codigo' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";

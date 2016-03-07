@@ -15,7 +15,7 @@ class DaoActividad {
     
     public function listarActividadxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_actividad where Id_Actividad='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoActividad {
 
     public function listarActividad() {
         try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_actividad order by Id_Actividad";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoActividad {
 
     public function codAutActividad() {
         try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_actividad";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoActividad {
 
     public function registrarActividad($ID_ACTIVIDAD, $ID_USUARIO, $NOMBRE, $DESCRIPCION, $FECHA_HORA_INICIO, $COSTO, $FECHA_REGISTRO, $ESTADO, $PRIORIDAD, $COMPLEJIDAD) {
         try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_actividad (Id_Actividad,Nombre,Descripción,Fecha_Hora_Inicio,Fecha_Hora_Fin,Costo,Fecha_Registro,Estado,Prioridad,Complejidad,Id_Usuario) "
+                    . "VALUES ('$ID_ACTIVIDAD','$ID_USUARIO','$NOMBRE','$DESCRIPCION','$FECHA_HORA_INICIO','$COSTO','$FECHA_REGISTRO','$ESTADO','$PRIORIDAD','$COMPLEJIDAD')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,10 +78,10 @@ class DaoActividad {
 
     public function actualizarActividad($ID_ACTIVIDAD, $ID_USUARIO, $NOMBRE, $DESCRIPCION, $FECHA_HORA_INICIO, $COSTO, $FECHA_REGISTRO, $ESTADO, $PRIORIDAD, $COMPLEJIDAD) {
         try {
-            $sql = "UPDATE perxproxpet SET "
-                    . "codPersona='$persona',"
-                    . "codPeticion='$peticion',"
-                    . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
+            $sql = "UPDATE tbl_actividad SET "
+                    . "Nombre='$persona',"
+                    . "Descripción='$peticion',"
+                    . "estado='$estado' WHERE Id_Actividad='$codigo' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";

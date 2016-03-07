@@ -15,7 +15,7 @@ class DaoTipo_Notificacion {
     
     public function listarTipo_NotificacionxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_tipo_notificación where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoTipo_Notificacion {
     
     public function listarTipo_Notificacion() {
                                          try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_tipo_notificación order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoTipo_Notificacion {
     
     public function codAutTipo_Notificacion() {
                                               try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_tipo_notificación";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoTipo_Notificacion {
     
     public function registrarTipo_Notificacion($ID_TIPO_NOTIFICACION,$ESTADO,$NOMBRE) {
                                               try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_tipo_notificación (Id_Tipo_Notificación,Estado,Nombre) "
+                    . "VALUES ('$ID_TIPO_NOTIFICACION','$ESTADO','$NOMBRE')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,7 +78,7 @@ class DaoTipo_Notificacion {
     
     public function actualizarTipo_Notificacion($ID_TIPO_NOTIFICACION,$ESTADO,$NOMBRE) {
                                         try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_tipo_notificación SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

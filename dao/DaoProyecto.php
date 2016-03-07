@@ -15,7 +15,7 @@ class DaoProyecto {
     
     public function listarProyectoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_proyecto where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoProyecto {
     
     public function listarProyecto() {
                              try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_proyecto order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoProyecto {
     
     public function codAutProyecto() {
                              try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_proyecto";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoProyecto {
     
     public function registrarProyecto($ID_PROYECTO,$NOMBRE,$FECHA_INICIO,$FECHA_FIN,$DESCRIPCION,$COSTO,$PRECIO,$FECHA_REGISTRO,$ESTADO) {
                                 try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_proyecto (Id_Proyecto,Nombre,Fecha_Inicio,Fecha_Fin,Descripción,Costo,Precio,Fecha_de_Registro,Estado) "
+                    . "VALUES ('$ID_PROYECTO','$NOMBRE','$FECHA_INICIO','$FECHA_FIN','$DESCRIPCION','$COSTO','$PRECIO','$FECHA_REGISTRO','$ESTADO')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,7 +78,7 @@ class DaoProyecto {
     
     public function actualizarProyecto($ID_PROYECTO,$NOMBRE,$FECHA_INICIO,$FECHA_FIN,$DESCRIPCION,$COSTO,$PRECIO,$FECHA_REGISTRO,$ESTADO) {
                               try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_proyecto SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

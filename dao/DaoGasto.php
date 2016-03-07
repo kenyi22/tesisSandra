@@ -14,7 +14,7 @@
 class DaoGasto {
     public function listarGastoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_gasto where Id_Gasto='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -29,7 +29,7 @@ class DaoGasto {
     
     public function listarGasto() {
         try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_gasto order by Id_Gasto";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -44,7 +44,7 @@ class DaoGasto {
     
     public function codAutGasto() {
         try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_gasto";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -65,7 +65,7 @@ class DaoGasto {
     
     public function registrarGasto($ID_GASTO,$ID_TIPO_GASTO,$PROYECTO) {
          try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
+            $sql = " INSERT INTO tbl_gasto (Id_Gasto,Monto,Estado,Id_Proyecto,Id_Tipo_Gasto) "
                     . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
@@ -77,7 +77,7 @@ class DaoGasto {
     
     public function actualizarActividad($ID_GASTO,$ID_TIPO_GASTO,$PROYECTO) {
         try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_gasto SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

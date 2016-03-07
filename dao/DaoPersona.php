@@ -15,7 +15,7 @@ class DaoPersona {
     
     public function listarPersonaxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_persona where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoPersona {
     
     public function listarPersona() {
               try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_persona order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoPersona {
     
     public function codAutPersona() {
                 try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_persona";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoPersona {
     
     public function registrarPersona($ID_PERSONA,$NOMBRE,$APEPATERNO,$APEMATERNO,$DNI,$RUC,$CORREO,$TELEFONO,$ESTADO,$FECHA_REGISTRO) {
                 try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_persona (Id_Persona,Nombres,Apellido_Paterno,Apellido_Materno,Dni,Ruc,Correo,Telefono,Estado,Fecha_Registro) "
+                    . "VALUES ('$ID_PERSONA','$NOMBRE','$APEPATERNO','$APEMATERNO','$DNI','$RUC','$CORREO','$TELEFONO','$ESTADO','$FECHA_REGISTRO')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,7 +78,7 @@ class DaoPersona {
     
     public function actualizarPersona($ID_PERSONA,$NOMBRE,$APEPATERNO,$APEMATERNO,$DNI,$RUC,$CORREO,$TELEFONO,$ESTADO,$FECHA_REGISTRO) {
                 try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_persona SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";

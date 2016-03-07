@@ -15,7 +15,7 @@ class DaoTipoUsuario {
     
     public function listarTipoUsuarioxCod($codigo) {
         try {
-            $sql = "SELECT * FROM rolprivilegio where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_tipo_usuario where CodRolPrivilegio='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -30,7 +30,7 @@ class DaoTipoUsuario {
     
     public function listarTipoUsuario() {
                                          try {
-            $sql = "SELECT * FROM usuario order by CodUsuario";
+            $sql = "SELECT * FROM tbl_tipo_usuario order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
@@ -45,7 +45,7 @@ class DaoTipoUsuario {
     
     public function codAutTipoUsuario() {
                                                try {
-            $sql = "SELECT COUNT(*) +1 FROM detalcance";
+            $sql = "SELECT COUNT(*) +1 FROM tbl_tipo_usuario";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
@@ -66,8 +66,8 @@ class DaoTipoUsuario {
     
     public function registrarTipoUsuario($ID_USUARIO,$ID_PERSONA,$NOMBRE_USUARIO,$CONTRASENNA) {
                                               try {
-            $sql = " INSERT INTO perxproxpet (codPerxProxPet,codPersona,codPeticion,FecRegis,estado) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+            $sql = " INSERT INTO tbl_tipo_usuario (Id_Usuario,Nombre_Usuario,Contraseña,Id_Persona) "
+                    . "VALUES ('$ID_USUARIO','$ID_PERSONA','$NOMBRE_USUARIO','$CONTRASENNA')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -78,7 +78,7 @@ class DaoTipoUsuario {
     
     public function actualizarTipoUsuario($ID_USUARIO,$ID_PERSONA,$NOMBRE_USUARIO,$CONTRASENNA) {
                                         try {
-            $sql = "UPDATE perxproxpet SET "
+            $sql = "UPDATE tbl_tipo_usuario SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
