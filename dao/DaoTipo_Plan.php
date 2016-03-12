@@ -12,7 +12,7 @@
  * @author kenyi
  */
 class DaoTipo_Plan {
-    
+
     public function listarTipo_PlanxCod($codigo) {
         try {
             $sql = "SELECT * FROM tbl_tipo_plan where CodRolPrivilegio='" . $codigo . "'";
@@ -27,9 +27,9 @@ class DaoTipo_Plan {
             echo "error en el sistema $ex";
         }
     }
-    
+
     public function listarTipo_Plan() {
-                                         try {
+        try {
             $sql = "SELECT * FROM tbl_tipo_plan order by CodUsuario";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
@@ -42,9 +42,9 @@ class DaoTipo_Plan {
             echo "error en el sistema $ex";
         }
     }
-    
+
     public function codAutTipo_Plan() {
-                                               try {
+        try {
             $sql = "SELECT COUNT(*) +1 FROM tbl_tipo_plan";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
@@ -61,11 +61,11 @@ class DaoTipo_Plan {
             return $lista;
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
-        } 
+        }
     }
-    
-    public function registrarTipo_Plan($ID_TIPO_PLAN,$NOMBRE,$ESTADO) {
-                                             try {
+
+    public function registrarTipo_Plan($ID_TIPO_PLAN, $NOMBRE, $ESTADO) {
+        try {
             $sql = " INSERT INTO tbl_tipo_plan (Id_Tipo_Plan,Nombre,Estado) "
                     . "VALUES ('$ID_TIPO_PLAN','$NOMBRE','$ESTADO')";
             $resul = mysql_query($sql, $this->con);
@@ -75,9 +75,9 @@ class DaoTipo_Plan {
         }
         return $resul;
     }
-    
-    public function actualizarTipo_Plan($ID_TIPO_PLAN,$NOMBRE,$ESTADO) {
-                                        try {
+
+    public function actualizarTipo_Plan($ID_TIPO_PLAN, $NOMBRE, $ESTADO) {
+        try {
             $sql = "UPDATE tbl_tipo_plan SET "
                     . "codPersona='$persona',"
                     . "codPeticion='$peticion',"
@@ -87,6 +87,7 @@ class DaoTipo_Plan {
             echo "error en el sistema $ex";
             $resul = 'false';
         }
-        return $resul;  
+        return $resul;
     }
+
 }
