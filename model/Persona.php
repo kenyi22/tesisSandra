@@ -23,17 +23,18 @@ class Persona {
     PRIVATE $ESTADO;
     PRIVATE $FECHA_REGISTRO;
     
-    function __construct($ID_PERSONA, $NOMBRE, $APEPATERNO, $APEMATERNO, $DNI, $RUC, $CORREO, $TELEFONO, $ESTADO, $FECHA_REGISTRO) {
-        $this->ID_PERSONA = $ID_PERSONA;
-        $this->NOMBRE = $NOMBRE;
-        $this->APEPATERNO = $APEPATERNO;
-        $this->APEMATERNO = $APEMATERNO;
-        $this->DNI = $DNI;
-        $this->RUC = $RUC;
-        $this->CORREO = $CORREO;
-        $this->TELEFONO = $TELEFONO;
-        $this->ESTADO = $ESTADO;
-        $this->FECHA_REGISTRO = $FECHA_REGISTRO;
+    function __construct($ID_PERSONA=null, $NOMBRE=null, $APEPATERNO=null, $APEMATERNO=null, $DNI=null, $RUC=null, $CORREO=null, $TELEFONO=null, $ESTADO=null, $FECHA_REGISTRO=null) {
+        $this->ID_PERSONA = is_null($ID_PERSONA) ? $this->ID_PERSONA : $ID_PERSONA;
+        $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
+        $this->APEPATERNO = is_null($APEPATERNO) ? $this->APEPATERNO : $APEPATERNO;
+        $this->APEMATERNO = is_null($APEMATERNO) ? $this->APEMATERNO : $APEMATERNO;
+        $this->DNI = is_null($DNI) ? $this->DNI : $DNI;
+        $this->RUC = is_null($RUC) ? $this->RUC : $RUC;
+        $this->CORREO = is_null($CORREO) ? $this->CORREO : $CORREO;
+        $this->TELEFONO = is_null($TELEFONO) ? $this->TELEFONO : $TELEFONO;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
+        $this->FECHA_REGISTRO = is_null($FECHA_REGISTRO) ? $this->FECHA_REGISTRO : $FECHA_REGISTRO;
+
     }
     
     function getID_PERSONA() {

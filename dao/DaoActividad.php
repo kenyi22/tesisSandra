@@ -11,7 +11,16 @@
  *
  * @author kenyi
  */
+require_once 'Conexion.php';
+
 class DaoActividad {
+    
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
+
     
     public function listarActividadxCod($codigo) {
         try {
@@ -19,7 +28,7 @@ class DaoActividad {
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $objRol = new Actividad($re[0], $re[1], $re[2], $re[3], $re[4], $re[5], $re[6], $re[7], $re[8], $re[9]);
                 $lista[] = $objRol;
             }
             return $lista;
@@ -34,7 +43,7 @@ class DaoActividad {
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new USUARIO($re[0], $re[1], $re[2], $re[3], $re[4]);
+                $objUsua = new Actividad($re[0], $re[1], $re[2], $re[3], $re[4], $re[5], $re[6], $re[7], $re[8], $re[9]);
                 $lista[] = $objUsua;
             }
             return $lista;

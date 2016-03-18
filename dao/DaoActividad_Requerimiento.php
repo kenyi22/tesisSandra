@@ -12,6 +12,13 @@
  * @author kenyi
  */
 class daoActividad_Requerimiento {
+    
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
+    
     public function listarActividadxCod($codigo) {
         try {
             $sql = "SELECT * FROM tbl_actividad_x_requerimiento where CodRolPrivilegio='" . $codigo . "'";

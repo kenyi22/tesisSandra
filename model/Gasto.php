@@ -16,10 +16,10 @@ class Gasto {
    PRIVATE $ID_TIPO_GASTO;
    PRIVATE $PROYECTO;
    
-   function __construct($ID_GASTO, $ID_TIPO_GASTO, $PROYECTO) {
-       $this->ID_GASTO = $ID_GASTO;
-       $this->ID_TIPO_GASTO = $ID_TIPO_GASTO;
-       $this->PROYECTO = $PROYECTO;
+   function __construct($ID_GASTO=null, $ID_TIPO_GASTO=null, $PROYECTO=null) {
+       $this->ID_GASTO = is_null($ID_GASTO) ? $this->ID_GASTO : $ID_GASTO;
+       $this->ID_TIPO_GASTO = is_null($ID_TIPO_GASTO) ? $this->ID_TIPO_GASTO : $ID_TIPO_GASTO;
+       $this->PROYECTO = is_null($PROYECTO) ? $this->PROYECTO : $PROYECTO;
    }
    
    function getID_GASTO() {

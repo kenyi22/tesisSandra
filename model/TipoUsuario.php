@@ -17,11 +17,11 @@ class TipoUsuario {
     PRIVATE $NOMBRE_USUARIO;
     PRIVATE $CONTRASENNA;
     
-    function __construct($ID_USUARIO, $ID_PERSONA, $NOMBRE_USUARIO, $CONTRASENNA) {
-        $this->ID_USUARIO = $ID_USUARIO;
-        $this->ID_PERSONA = $ID_PERSONA;
-        $this->NOMBRE_USUARIO = $NOMBRE_USUARIO;
-        $this->CONTRASENNA = $CONTRASENNA;
+    function __construct($ID_USUARIO=null, $ID_PERSONA=null, $NOMBRE_USUARIO=null, $CONTRASENNA=null) {
+        $this->ID_USUARIO = is_null($ID_USUARIO) ? $this->ID_USUARIO : $ID_USUARIO;
+        $this->ID_PERSONA = is_null($ID_PERSONA) ? $this->ID_PERSONA : $ID_PERSONA;
+        $this->NOMBRE_USUARIO = is_null($NOMBRE_USUARIO) ? $this->NOMBRE_USUARIO : $NOMBRE_USUARIO;
+        $this->CONTRASENNA = is_null($CONTRASENNA) ? $this->CONTRASENNA : $CONTRASENNA;        
     }
 
     function getID_USUARIO() {

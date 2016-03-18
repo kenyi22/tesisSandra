@@ -18,10 +18,10 @@ class Usuario {
     PRIVATE $NOMBRE;
     PRIVATE $ESTADO;
 
-    function __construct($ID_USUARIO, $NOMBRE, $ESTADO) {
-        $this->ID_USUARIO = $ID_USUARIO;
-        $this->NOMBRE = $NOMBRE;
-        $this->ESTADO = $ESTADO;
+    function __construct($ID_USUARIO=null, $NOMBRE=null, $ESTADO=null) {
+        $this->ID_USUARIO = is_null($ID_USUARIO) ? $this->ID_USUARIO : $ID_USUARIO;
+        $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
     }
     
     function getID_USUARIO() {

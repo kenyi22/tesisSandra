@@ -20,9 +20,7 @@ class Conexion {
     private $db = "tesiskuc_bd";
 
     function __construct() {
-
         $this->con = mysql_connect($this->server, $this->user, $this->pass);
         mysql_select_db($this->db, $this->con);
-
     }
 }

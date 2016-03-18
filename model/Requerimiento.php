@@ -18,12 +18,12 @@ class Requerimiento {
     PRIVATE $DESCRIPCION;
     PRIVATE $ESTADO;
     
-    function __construct($ID_REQUERIMIENTO, $ID_PROYECTO, $NOMBRE, $DESCRIPCION, $ESTADO) {
-        $this->ID_REQUERIMIENTO = $ID_REQUERIMIENTO;
-        $this->ID_PROYECTO = $ID_PROYECTO;
-        $this->NOMBRE = $NOMBRE;
-        $this->DESCRIPCION = $DESCRIPCION;
-        $this->ESTADO = $ESTADO;
+    function __construct($ID_REQUERIMIENTO=null, $ID_PROYECTO=null, $NOMBRE=null, $DESCRIPCION=null, $ESTADO=null) {
+        $this->ID_REQUERIMIENTO = is_null($ID_REQUERIMIENTO) ? $this->ID_REQUERIMIENTO : $ID_REQUERIMIENTO;
+        $this->ID_PROYECTO = is_null($ID_PROYECTO) ? $this->ID_PROYECTO : $ID_PROYECTO;
+        $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
+        $this->DESCRIPCION = is_null($DESCRIPCION) ? $this->DESCRIPCION : $DESCRIPCION;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
     }
     
     function getID_REQUERIMIENTO() {

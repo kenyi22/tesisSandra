@@ -20,14 +20,14 @@ class Notificacion {
     PRIVATE $FECHA;
     PRIVATE $HORA;
     
-    function __construct($ID_NOTIFICACION, $ID_TIPO_NOTIFICACION, $ID_PROYECTO, $ESTADO, $LEIDO, $FECHA, $HORA) {
-        $this->ID_NOTIFICACION = $ID_NOTIFICACION;
-        $this->ID_TIPO_NOTIFICACION = $ID_TIPO_NOTIFICACION;
-        $this->ID_PROYECTO = $ID_PROYECTO;
-        $this->ESTADO = $ESTADO;
-        $this->LEIDO = $LEIDO;
-        $this->FECHA = $FECHA;
-        $this->HORA = $HORA;
+    function __construct($ID_NOTIFICACION=null, $ID_TIPO_NOTIFICACION=null, $ID_PROYECTO=null, $ESTADO=null, $LEIDO=null, $FECHA=null, $HORA=null) {
+        $this->ID_NOTIFICACION = is_null($ID_NOTIFICACION) ? $this->ID_NOTIFICACION : $ID_NOTIFICACION;
+        $this->ID_TIPO_NOTIFICACION = is_null($ID_TIPO_NOTIFICACION) ? $this->ID_TIPO_NOTIFICACION : $ID_TIPO_NOTIFICACION;
+        $this->ID_PROYECTO = is_null($ID_PROYECTO) ? $this->ID_PROYECTO : $ID_PROYECTO;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
+        $this->LEIDO = is_null($LEIDO) ? $this->LEIDO : $LEIDO;
+        $this->FECHA = is_null($FECHA) ? $this->FECHA : $FECHA;
+        $this->HORA = is_null($HORA) ? $this->HORA : $HORA;
     }
     
     function getID_NOTIFICACION() {

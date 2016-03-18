@@ -12,17 +12,19 @@ class Actividad {
    PRIVATE $PRIORIDAD;
    PRIVATE $COMPLEJIDAD;
    
-   function __construct($ID_ACTIVIDAD, $ID_USUARIO, $NOMBRE, $DESCRIPCION, $FECHA_HORA_INICIO, $COSTO, $FECHA_REGISTRO, $ESTADO, $PRIORIDAD, $COMPLEJIDAD) {
-       $this->ID_ACTIVIDAD = $ID_ACTIVIDAD;
-       $this->ID_USUARIO = $ID_USUARIO;
-       $this->NOMBRE = $NOMBRE;
-       $this->DESCRIPCION = $DESCRIPCION;
-       $this->FECHA_HORA_INICIO = $FECHA_HORA_INICIO;
-       $this->COSTO = $COSTO;
-       $this->FECHA_REGISTRO = $FECHA_REGISTRO;
-       $this->ESTADO = $ESTADO;
-       $this->PRIORIDAD = $PRIORIDAD;
-       $this->COMPLEJIDAD = $COMPLEJIDAD;
+   
+   
+   function __construct($ID_ACTIVIDAD=null, $ID_USUARIO=null, $NOMBRE=null, $DESCRIPCION=null, $FECHA_HORA_INICIO=null, $COSTO=null, $FECHA_REGISTRO=null, $ESTADO=null, $PRIORIDAD=null, $COMPLEJIDAD=null) {
+       $this->ID_ACTIVIDAD = is_null($ID_ACTIVIDAD) ? $this->ID_ACTIVIDAD : $ID_ACTIVIDAD;
+       $this->ID_USUARIO = is_null($ID_USUARIO) ? $this->ID_USUARIO : $ID_USUARIO;
+       $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
+       $this->DESCRIPCION = is_null($DESCRIPCION) ? $this->DESCRIPCION : $DESCRIPCION;
+       $this->FECHA_HORA_INICIO = is_null($FECHA_HORA_INICIO) ? $this->FECHA_HORA_INICIO : $FECHA_HORA_INICIO;
+       $this->COSTO = is_null($COSTO) ? $this->COSTO : $COSTO;
+       $this->FECHA_REGISTRO = is_null($FECHA_REGISTRO) ? $this->FECHA_REGISTRO : $FECHA_REGISTRO;
+       $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
+       $this->PRIORIDAD = is_null($PRIORIDAD) ? $this->PRIORIDAD : $PRIORIDAD;
+       $this->COMPLEJIDAD = is_null($COMPLEJIDAD) ? $this->COMPLEJIDAD : $COMPLEJIDAD;
    }
    
    function getID_ACTIVIDAD() {

@@ -16,10 +16,10 @@ class Planes_Proyecto {
     PRIVATE $ID_TIPO_PLAN;
     PRIVATE $ID_PROYECTO;
     
-    function __construct($ID_PLANES_PROYECTO, $ID_TIPO_PLAN, $ID_PROYECTO) {
-        $this->ID_PLANES_PROYECTO = $ID_PLANES_PROYECTO;
-        $this->ID_TIPO_PLAN = $ID_TIPO_PLAN;
-        $this->ID_PROYECTO = $ID_PROYECTO;
+    function __construct($ID_PLANES_PROYECTO=null, $ID_TIPO_PLAN=null, $ID_PROYECTO=null) {    
+        $this->ID_PLANES_PROYECTO = is_null($ID_PLANES_PROYECTO) ? $this->ID_PLANES_PROYECTO : $ID_PLANES_PROYECTO;
+        $this->ID_TIPO_PLAN = is_null($ID_TIPO_PLAN) ? $this->ID_TIPO_PLAN : $ID_TIPO_PLAN;
+        $this->ID_PROYECTO = is_null($ID_PROYECTO) ? $this->ID_PROYECTO : $ID_PROYECTO;
     }
     
     function getID_PLANES_PROYECTO() {

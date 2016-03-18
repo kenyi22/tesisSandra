@@ -13,13 +13,19 @@
  */
 class DaoNotificacion {
     
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
+
     public function listarNotificacionxCod($codigo) {
         try {
-            $sql = "SELECT * FROM tbl_notificación where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_notificación where Id_Notificación='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $objRol = new Notificacion($re[0], $re[1], $re[2], $re[3], $re[4], $re[5], $re[6]);
                 $lista[] = $objRol;
             }
             return $lista;
@@ -27,15 +33,14 @@ class DaoNotificacion {
             echo "error en el sistema $ex";
         }
     }
-    
-    
+
     public function listarNotificacion() {
         try {
-            $sql = "SELECT * FROM tbl_notificación order by CodUsuario";
+            $sql = "SELECT * FROM tbl_notificación order by Id_Notificación";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new USUARIO($re[0], $re[1], $re[2], $re[3], $re[4]);
+                $objRol = new Notificacion($re[0], $re[1], $re[2], $re[3], $re[4], $re[5], $re[6]);
                 $lista[] = $objUsua;
             }
             return $lista;
@@ -43,20 +48,20 @@ class DaoNotificacion {
             echo "error en el sistema $ex";
         }
     }
-    
+
     public function codAutNotificacion() {
         try {
             $sql = "SELECT COUNT(*) +1 FROM tbl_notificación";
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new DETALCANCE($re[0]);
-                if (is_null($objUsua->getDETALCANCE())) {
+                $objUsua = new Notificacion($re[0]);
+                if (is_null($objUsua->getID_NOTIFICACION())) {
                     $lista = "DA000001";
-                } else if ($objUsua->getDETALCANCE() > 0 and $objUsua->getDETALCANCE() < 10) {
-                    $lista = "DA00000" . $objUsua->getDETALCANCE();
-                } else if ($objUsua->getDETALCANCE() > 9) {
-                    $lista = "DA0000" . $objUsua->getDETALCANCE();
+                } else if ($objUsua->getID_NOTIFICACION() > 0 and $objUsua->getID_NOTIFICACION() < 10) {
+                    $lista = "DA00000" . $objUsua->getID_NOTIFICACION();
+                } else if ($objUsua->getID_NOTIFICACION() > 9) {
+                    $lista = "DA0000" . $objUsua->getID_NOTIFICACION();
                 }
             }
             return $lista;
@@ -64,11 +69,11 @@ class DaoNotificacion {
             echo "error en el sistema $ex";
         }
     }
-    
-    public function registrarNotificacion($ID_NOTIFICACION,$ID_TIPO_NOTIFICACION,$ID_PROYECTO,$ESTADO,$LEIDO,$FECHA,$HORA) {
+
+    public function registrarNotificacion($ID_NOTIFICACION, $ID_TIPO_NOTIFICACION, $ID_PROYECTO, $ESTADO, $LEIDO, $FECHA, $HORA) {
         try {
             $sql = " INSERT INTO tbl_notificación (Id_Notificación,Estado,Leido,Fecha,Hora,Id_Tipo_Notificación,Id_Proyecto) "
-                    . "VALUES ('$codPerxProxPet','$codPersonal','$codPeticion','$FecRegis','$estado')";
+                    . "VALUES ('$ID_NOTIFICACION','$ESTADO','$LEIDO','$FECHA','$HORA','$ID_TIPO_NOTIFICACION','$ID_PROYECTO')";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -76,13 +81,16 @@ class DaoNotificacion {
         }
         return $resul;
     }
-    
-    public function actualizarNotificacion($ID_NOTIFICACION,$ID_TIPO_NOTIFICACION,$ID_PROYECTO,$ESTADO,$LEIDO,$FECHA,$HORA) {
+
+    public function actualizarNotificacion($ID_NOTIFICACION, $ID_TIPO_NOTIFICACION, $ID_PROYECTO, $ESTADO, $LEIDO, $FECHA, $HORA) {
         try {
             $sql = "UPDATE tbl_notificación SET "
-                    . "codPersona='$persona',"
-                    . "codPeticion='$peticion',"
-                    . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
+                    . "Hora='$HORA',"
+                    . "Fecha='$FECHA',"
+                    . "Leido='$LEIDO',"
+                    . "Estado='$ESTADO',"
+                    . "Id_Proyecto='$ID_PROYECTO',"
+                    . "Id_Tipo_Notificación='$ID_TIPO_NOTIFICACION' WHERE Id_Notificación='$ID_NOTIFICACION' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";
@@ -90,4 +98,5 @@ class DaoNotificacion {
         }
         return $resul;
     }
+
 }

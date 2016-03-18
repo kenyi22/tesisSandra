@@ -15,9 +15,9 @@ class Actividad_Requerimiento {
     PRIVATE $ID_ACTIVIDAD_REQUERIMIENTOS;
     PRIVATE $ESTADO;
     
-    function __construct($ID_ACTIVIDAD_REQUERIMIENTOS, $ESTADO) {
-        $this->ID_ACTIVIDAD_REQUERIMIENTOS = $ID_ACTIVIDAD_REQUERIMIENTOS;
-        $this->ESTADO = $ESTADO;
+    function __construct($ID_ACTIVIDAD_REQUERIMIENTOS=null, $ESTADO=null) {
+        $this->ID_ACTIVIDAD_REQUERIMIENTOS = is_null($ID_ACTIVIDAD_REQUERIMIENTOS) ? $this->ID_ACTIVIDAD_REQUERIMIENTOS : $ID_ACTIVIDAD_REQUERIMIENTOS;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
     }
     
     function getID_ACTIVIDAD_REQUERIMIENTOS() {

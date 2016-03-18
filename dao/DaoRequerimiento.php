@@ -12,14 +12,21 @@
  * @author kenyi
  */
 class DaoRequerimiento {
+    
+    
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
 
     public function listarRequerimientoxCod($codigo) {
         try {
-            $sql = "SELECT * FROM tbl_requerimiento where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_requerimiento where Id_Requerimiento='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $objRol = new Requerimiento($re[0], $re[1], $re[2], $re[3], $re[4]);
                 $lista[] = $objRol;
             }
             return $lista;
@@ -30,11 +37,11 @@ class DaoRequerimiento {
 
     public function listarRequerimiento() {
         try {
-            $sql = "SELECT * FROM tbl_requerimiento order by CodUsuario";
+            $sql = "SELECT * FROM tbl_requerimiento order by Id_Requerimiento";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new USUARIO($re[0], $re[1], $re[2], $re[3], $re[4]);
+                $objRol = new Requerimiento($re[0], $re[1], $re[2], $re[3], $re[4]);
                 $lista[] = $objUsua;
             }
             return $lista;
@@ -50,12 +57,12 @@ class DaoRequerimiento {
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
                 $objUsua = new DETALCANCE($re[0]);
-                if (is_null($objUsua->getDETALCANCE())) {
+                if (is_null($objUsua->getID_REQUERIMIENTO())) {
                     $lista = "DA000001";
-                } else if ($objUsua->getDETALCANCE() > 0 and $objUsua->getDETALCANCE() < 10) {
-                    $lista = "DA00000" . $objUsua->getDETALCANCE();
-                } else if ($objUsua->getDETALCANCE() > 9) {
-                    $lista = "DA0000" . $objUsua->getDETALCANCE();
+                } else if ($objUsua->getID_REQUERIMIENTO() > 0 and $objUsua->getID_REQUERIMIENTO() < 10) {
+                    $lista = "DA00000" . $objUsua->getID_REQUERIMIENTO();
+                } else if ($objUsua->getID_REQUERIMIENTO() > 9) {
+                    $lista = "DA0000" . $objUsua->getID_REQUERIMIENTO();
                 }
             }
             return $lista;
@@ -79,9 +86,10 @@ class DaoRequerimiento {
     public function actualizarRequerimiento($ID_REQUERIMIENTO, $ID_PROYECTO, $NOMBRE, $DESCRIPCION, $ESTADO) {
         try {
             $sql = "UPDATE tbl_requerimiento SET "
-                    . "codPersona='$persona',"
-                    . "codPeticion='$peticion',"
-                    . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
+                    . "	Estado='$ESTADO',"
+                    . "Descripción='$DESCRIPCION',"
+                    . "Nombre='$NOMBRE',"
+                    . "Id_Proyecto='$ID_PROYECTO' WHERE Id_Requerimiento='$ID_REQUERIMIENTO' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";

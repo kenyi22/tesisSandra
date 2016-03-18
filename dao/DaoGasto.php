@@ -12,13 +12,20 @@
  * @author kenyi
  */
 class DaoGasto {
+    
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
+    
     public function listarGastoxCod($codigo) {
         try {
             $sql = "SELECT * FROM tbl_gasto where Id_Gasto='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $objRol = new Gasto($re[0], $re[1], $re[2]);
                 $lista[] = $objRol;
             }
             return $lista;
@@ -33,7 +40,7 @@ class DaoGasto {
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new USUARIO($re[0], $re[1], $re[2], $re[3], $re[4]);
+                $objRol = new Gasto($re[0], $re[1], $re[2]);
                 $lista[] = $objUsua;
             }
             return $lista;
@@ -48,13 +55,13 @@ class DaoGasto {
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new DETALCANCE($re[0]);
-                if (is_null($objUsua->getDETALCANCE())) {
+                $objUsua = new Gasto($re[0]);
+                if (is_null($objUsua->getID_GASTO())) {
                     $lista = "DA000001";
-                } else if ($objUsua->getDETALCANCE() > 0 and $objUsua->getDETALCANCE() < 10) {
-                    $lista = "DA00000" . $objUsua->getDETALCANCE();
-                } else if ($objUsua->getDETALCANCE() > 9) {
-                    $lista = "DA0000" . $objUsua->getDETALCANCE();
+                } else if ($objUsua->getID_GASTO() > 0 and $objUsua->getID_GASTO() < 10) {
+                    $lista = "DA00000" . $objUsua->getID_GASTO();
+                } else if ($objUsua->getID_GASTO() > 9) {
+                    $lista = "DA0000" . $objUsua->getID_GASTO();
                 }
             }
             return $lista;
@@ -79,7 +86,6 @@ class DaoGasto {
         try {
             $sql = "UPDATE tbl_gasto SET "
                     . "codPersona='$persona',"
-                    . "codPeticion='$peticion',"
                     . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {

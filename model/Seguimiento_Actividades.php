@@ -21,15 +21,16 @@ class Seguimiento_Actividades {
     PRIVATE $HORA;
     PRIVATE $DETALLE;
     
-    function __construct($ID_SEGUIMIENTO, $ID_ACTIVIDAD, $ID_USUARIO, $ACCION, $PORCENTAJE, $FECHA, $HORA, $DETALLE) {
-        $this->ID_SEGUIMIENTO = $ID_SEGUIMIENTO;
-        $this->ID_ACTIVIDAD = $ID_ACTIVIDAD;
-        $this->ID_USUARIO = $ID_USUARIO;
-        $this->ACCION = $ACCION;
-        $this->PORCENTAJE = $PORCENTAJE;
-        $this->FECHA = $FECHA;
-        $this->HORA = $HORA;
-        $this->DETALLE = $DETALLE;
+    function __construct($ID_SEGUIMIENTO=null, $ID_ACTIVIDAD=null, $ID_USUARIO=null, $ACCION=null, $PORCENTAJE=null, $FECHA=null, $HORA=null, $DETALLE=null) {
+        $this->ID_SEGUIMIENTO = is_null($ID_SEGUIMIENTO) ? $this->ID_SEGUIMIENTO : $ID_SEGUIMIENTO;
+        $this->ID_ACTIVIDAD = is_null($ID_ACTIVIDAD) ? $this->ID_ACTIVIDAD : $ID_ACTIVIDAD;
+        $this->ID_USUARIO = is_null($ID_USUARIO) ? $this->ID_USUARIO : $ID_USUARIO;
+        $this->ACCION = is_null($ACCION) ? $this->ACCION : $ACCION;
+        $this->PORCENTAJE = is_null($PORCENTAJE) ? $this->PORCENTAJE : $PORCENTAJE;
+        $this->FECHA = is_null($FECHA) ? $this->FECHA : $FECHA;
+        $this->HORA = is_null($HORA) ? $this->HORA : $HORA;
+        $this->DETALLE = is_null($DETALLE) ? $this->DETALLE : $DETALLE;
+
     }
     
     function getID_SEGUIMIENTO() {

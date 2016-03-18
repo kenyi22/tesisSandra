@@ -13,13 +13,20 @@
  */
 class DaoTipo_Notificacion {
     
+    
+    PRIVATE $con="";
+    
+    function __construct() {
+        $this->con=new Conexion();
+    }
+    
     public function listarTipo_NotificacionxCod($codigo) {
         try {
-            $sql = "SELECT * FROM tbl_tipo_notificación where CodRolPrivilegio='" . $codigo . "'";
+            $sql = "SELECT * FROM tbl_tipo_notificación where id_tipo_notificacion='" . $codigo . "'";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objRol = new ROLPRIVILEGIO($re[0], $re[1], $re[2], $re[4], $re[3]);
+                $objRol = new Tipo_Notificacion($re[0], $re[1], $re[2]);
                 $lista[] = $objRol;
             }
             return $lista;
@@ -30,11 +37,11 @@ class DaoTipo_Notificacion {
     
     public function listarTipo_Notificacion() {
                                          try {
-            $sql = "SELECT * FROM tbl_tipo_notificación order by CodUsuario";
+            $sql = "SELECT * FROM tbl_tipo_notificación order by id_tipo_notificacion";
             $resul = mysql_query($sql, $this->con);
             $lista = array();
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new USUARIO($re[0], $re[1], $re[2], $re[3], $re[4]);
+                $objRol = new Tipo_Notificacion($re[0], $re[1], $re[2]);
                 $lista[] = $objUsua;
             }
             return $lista;
@@ -49,13 +56,13 @@ class DaoTipo_Notificacion {
             $resul = mysql_query($sql, $this->con);
             $objUsua = '';
             while ($re = mysql_fetch_row($resul)) {
-                $objUsua = new DETALCANCE($re[0]);
-                if (is_null($objUsua->getDETALCANCE())) {
+                $objUsua = new Tipo_Notificacion($re[0]);
+                if (is_null($objUsua->getID_TIPO_NOTIFICACION())) {
                     $lista = "DA000001";
-                } else if ($objUsua->getDETALCANCE() > 0 and $objUsua->getDETALCANCE() < 10) {
-                    $lista = "DA00000" . $objUsua->getDETALCANCE();
-                } else if ($objUsua->getDETALCANCE() > 9) {
-                    $lista = "DA0000" . $objUsua->getDETALCANCE();
+                } else if ($objUsua->getID_TIPO_NOTIFICACION() > 0 and $objUsua->getID_TIPO_NOTIFICACION() < 10) {
+                    $lista = "DA00000" . $objUsua->getID_TIPO_NOTIFICACION();
+                } else if ($objUsua->getID_TIPO_NOTIFICACION() > 9) {
+                    $lista = "DA0000" . $objUsua->getID_TIPO_NOTIFICACION();
                 }
             }
             return $lista;
@@ -79,9 +86,8 @@ class DaoTipo_Notificacion {
     public function actualizarTipo_Notificacion($ID_TIPO_NOTIFICACION,$ESTADO,$NOMBRE) {
                                         try {
             $sql = "UPDATE tbl_tipo_notificación SET "
-                    . "codPersona='$persona',"
-                    . "codPeticion='$peticion',"
-                    . "estado='$estado' WHERE codPerxProxPet='$codigo' ";
+                    . "Nombre='$NOMBRE',"
+                    . "Estado='$ESTADO' WHERE Id_Tipo_Notificación='$ID_TIPO_NOTIFICACION' ";
             $resul = mysql_query($sql, $this->con);
         } catch (Exception $ex) {
             echo "error en el sistema $ex";

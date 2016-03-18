@@ -16,10 +16,10 @@ class Tipo_Plan {
     PRIVATE $NOMBRE;
     PRIVATE $ESTADO;
     
-    function __construct($ID_TIPO_PLAN, $NOMBRE, $ESTADO) {
-        $this->ID_TIPO_PLAN = $ID_TIPO_PLAN;
-        $this->NOMBRE = $NOMBRE;
-        $this->ESTADO = $ESTADO;
+    function __construct($ID_TIPO_PLAN=null, $NOMBRE=null, $ESTADO=null) {
+        $this->ID_TIPO_PLAN = is_null($ID_TIPO_PLAN) ? $this->ID_TIPO_PLAN : $ID_TIPO_PLAN;
+        $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
+        $this->ESTADO = is_null($ESTADO) ? $this->ESTADO : $ESTADO;
     }
     
     function getID_TIPO_PLAN() {

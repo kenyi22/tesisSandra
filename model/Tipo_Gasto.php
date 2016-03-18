@@ -15,9 +15,9 @@ class Tipo_Gasto {
     PRIVATE $ID_TIPO_GASTO;
     PRIVATE $NOMBRE;
     
-    function __construct($ID_TIPO_GASTO, $NOMBRE) {
-        $this->ID_TIPO_GASTO = $ID_TIPO_GASTO;
-        $this->NOMBRE = $NOMBRE;
+    function __construct($ID_TIPO_GASTO=null, $NOMBRE=null) {
+        $this->ID_TIPO_GASTO = is_null($ID_TIPO_GASTO) ? $this->ID_TIPO_GASTO : $ID_TIPO_GASTO;
+        $this->NOMBRE = is_null($NOMBRE) ? $this->NOMBRE : $NOMBRE;
     }
     
     function getID_TIPO_GASTO() {
