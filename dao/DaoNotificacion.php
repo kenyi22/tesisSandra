@@ -11,6 +11,11 @@
  *
  * @author kenyi
  */
+
+
+require_once 'Conexion.php';
+require_once '../model/Notificacion.php';
+
 class DaoNotificacion {
     
     PRIVATE $con="";

@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoTipo_Gasto.php';
+
 class ControlTipo_Gasto {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoTipo_Gasto();
     }
     
     public function listarTipo_GastoxCod($codigo) {

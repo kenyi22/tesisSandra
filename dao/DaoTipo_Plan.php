@@ -11,6 +11,11 @@
  *
  * @author kenyi
  */
+
+
+require_once 'Conexion.php';
+require_once '../model/Tipo_Plan.php';
+
 class DaoTipo_Plan {
     
     PRIVATE $con="";

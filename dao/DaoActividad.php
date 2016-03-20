@@ -12,6 +12,7 @@
  * @author kenyi
  */
 require_once 'Conexion.php';
+require_once '../model/Actividad.php';
 
 class DaoActividad {
     

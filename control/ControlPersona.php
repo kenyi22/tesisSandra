@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoPersona.php';
+
 class ControlPersona {
    function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoPersona();
     }
     
     public function listarPersonaxCod($codigo) {

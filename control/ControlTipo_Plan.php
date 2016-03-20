@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoTipo_Plan.php';
+
 class ControlTipo_Plan {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoTipo_Plan();
     }
     
     public function listarTipo_PlanxCod($codigo) {

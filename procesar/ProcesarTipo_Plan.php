@@ -11,7 +11,7 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlTipo_Plan.php';
 
 session_start();
 
@@ -22,13 +22,12 @@ session_start();
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_TIPO_PLAN = $_POST["cod"];
+$NOMBRE = $_POST["descrRol"];
+$ESTADO = $_POST["estado"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlTipo_Plan();
+$result1 = $objN1->registrarTipo_Plan($ID_TIPO_PLAN, $NOMBRE, $ESTADO);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

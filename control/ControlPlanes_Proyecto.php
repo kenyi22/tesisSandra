@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoPlanes_Proyecto.php';
+
 class ControlPlanes_Proyecto {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoPlanes_Proyecto();
     }
     
     public function listarPlanes_ProyectoxCod($codigo)  {

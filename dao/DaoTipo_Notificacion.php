@@ -11,6 +11,10 @@
  *
  * @author kenyi
  */
+
+require_once 'Conexion.php';
+require_once '../model/Tipo_Notificacion.php';
+
 class DaoTipo_Notificacion {
     
     

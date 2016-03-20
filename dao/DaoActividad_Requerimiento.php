@@ -11,6 +11,10 @@
  *
  * @author kenyi
  */
+
+require_once 'Conexion.php';
+require_once '../model/Actividad_Requerimiento.php';
+
 class daoActividad_Requerimiento {
     
     PRIVATE $con="";

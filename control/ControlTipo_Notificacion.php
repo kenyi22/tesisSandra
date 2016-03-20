@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoTipo_Notificacion.php';
+
 class ControlTipo_Notificacion {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoTipo_Notificacion();
     }
     
     public function listarTipo_NotificacionxCod($codigo) {

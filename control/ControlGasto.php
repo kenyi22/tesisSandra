@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoGasto.php';
+
 class ControlGasto {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoGasto();
     }
 
     public function listarGastoxCod($codigo) {

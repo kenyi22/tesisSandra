@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoNotificacion.php';
+
 class ControlNotificacion {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoNotificacion();
     }
     
     public function listarNotificacionxCod($codigo) {

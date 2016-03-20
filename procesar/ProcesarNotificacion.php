@@ -11,7 +11,7 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlNotificacion.php';
 
 session_start();
 
@@ -21,14 +21,16 @@ session_start();
 //1. Registrar Rol--->ok
 if (isset($_POST["nue_rol"])) {
 
-//obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_NOTIFICACION= $_POST["cod"];
+$ID_TIPO_NOTIFICACION= $_POST["cod"];
+$ID_PROYECTO= $_POST["cod"];
+$ESTADO= $_POST["cod"];
+$LEIDO= $_POST["cod"];
+$FECHA= $_POST["cod"];
+$HORA= $_POST["cod"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlNotificacion();
+$result1 = $objN1->registrarNotificacion($ID_NOTIFICACION, $ID_TIPO_NOTIFICACION, $ID_PROYECTO, $ESTADO, $LEIDO, $FECHA, $HORA);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

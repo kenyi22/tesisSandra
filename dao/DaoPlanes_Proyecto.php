@@ -11,6 +11,11 @@
  *
  * @author kenyi
  */
+
+
+require_once 'Conexion.php';
+require_once '../model/Planes_Proyecto.php';
+
 class DaoPlanes_Proyecto {
     
     PRIVATE $con="";

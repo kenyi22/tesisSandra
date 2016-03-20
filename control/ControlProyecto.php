@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoProyecto.php';
+
 class ControlProyecto {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoProyecto();
     }
     
     public function listarProyectoxCod($codigo) {

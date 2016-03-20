@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoActividad_Requerimiento.php';
+
 class ControlActividad_Requerimiento {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoActividad_Requerimiento();
     }
 
     public function listarActividadxCod($codigo) {

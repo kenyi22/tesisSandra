@@ -11,7 +11,7 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlActividad_Requerimiento.php';
 
 session_start();
 
@@ -22,13 +22,11 @@ session_start();
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_ACTIVIDAD_REQUERIMIENTOS = $_POST["cod"];
+$ESTADO = $_POST["descrRol"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlActividad_Requerimiento();
+$result1 = $objN1->registrarActividad_Requerimiento($ID_ACTIVIDAD_REQUERIMIENTOS, $ESTADO);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

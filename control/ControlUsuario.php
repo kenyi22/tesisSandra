@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoUsuario.php';
+
 class ControlUsuario {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoUsuario();
     }
     
     public function listarUsuarioxCod($codigo) {

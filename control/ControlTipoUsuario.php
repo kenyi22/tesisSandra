@@ -11,9 +11,11 @@
  *
  * @author kenyi
  */
+require_once '../dao/DaoTipoUsuario.php';
+
 class ControlTipoUsuario {
     function __construct() {
-        $this->objD = new daoNegocio();
+        $this->objD = new DaoTipoUsuario();
     }
     
     public function listarTipoUsuarioxCod($codigo) {

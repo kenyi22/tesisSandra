@@ -11,7 +11,7 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlProyecto.php';
 
 session_start();
 
@@ -22,13 +22,18 @@ session_start();
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_PROYECTO = $_POST["cod"];
+$NOMBRE = $_POST["cod"];
+$FECHA_INICIO = $_POST["cod"];
+$FECHA_FIN = $_POST["cod"];
+$DESCRIPCION = $_POST["cod"];
+$COSTO = $_POST["cod"];
+$PRECIO = $_POST["cod"];
+$FECHA_REGISTRO = $_POST["cod"];
+$ESTADO = $_POST["cod"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlProyecto();
+$result1 = $objN1->registrarProyecto($ID_PROYECTO, $NOMBRE, $FECHA_INICIO, $FECHA_FIN, $DESCRIPCION, $COSTO, $PRECIO, $FECHA_REGISTRO, $ESTADO);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

@@ -11,24 +11,28 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlActividad.php';
 
 session_start();
-
-
 
 //A. NUEVO-->REGISTRO
 //1. Registrar Rol--->ok
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_ACTIVIDAD = $_POST["cod"]; 
+$ID_USUARIO = $_POST["cod"];
+$NOMBRE = $_POST["cod"];
+$DESCRIPCION = $_POST["cod"];
+$FECHA_HORA_INICIO = $_POST["cod"];
+$COSTO = $_POST["cod"];
+$FECHA_REGISTRO = $_POST["cod"];
+$ESTADO = $_POST["cod"];
+$PRIORIDAD = $_POST["cod"];
+$COMPLEJIDAD = $_POST["cod"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlActividad();
+$result1 = $objN1->registrarActividad($ID_ACTIVIDAD, $ID_USUARIO, $NOMBRE, $DESCRIPCION, $FECHA_HORA_INICIO, $COSTO, $FECHA_REGISTRO, $ESTADO, $PRIORIDAD, $COMPLEJIDAD);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

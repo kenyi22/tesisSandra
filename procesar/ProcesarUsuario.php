@@ -11,24 +11,21 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlUsuario.php';
 
 session_start();
-
-
 
 //A. NUEVO-->REGISTRO
 //1. Registrar Rol--->ok
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_USUARIO = $_POST["cod"];
+$NOMBRE = $_POST["descrRol"];
+$ESTADO = $_POST["estado"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlUsuario();
+$result1 = $objN1->registrarUsuario($ID_USUARIO, $NOMBRE, $ESTADO);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 

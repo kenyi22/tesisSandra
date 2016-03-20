@@ -11,6 +11,11 @@
  *
  * @author kenyi
  */
+
+
+require_once 'Conexion.php';
+require_once '../model/Seguimiento_Actividades.php';
+
 class DaoSeguimiento_Actividades {
     
     PRIVATE $con="";

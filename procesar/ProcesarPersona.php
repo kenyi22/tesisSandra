@@ -11,7 +11,7 @@
  *
  * @author kenyi
  */
-require_once '../control.php';
+require_once '../control/ControlPersona.php';
 
 session_start();
 
@@ -22,13 +22,19 @@ session_start();
 if (isset($_POST["nue_rol"])) {
 
 //obteniendo la informacion
-$CODROL = $_POST["cod"];
-$DESCRROL = $_POST["descrRol"];
-$FLAGESTADO = $_POST["estado"];
-$NOMROL = $_POST["nomRol"];
+$ID_PERSONA = $_POST["cod"];
+$NOMBRE = $_POST["cod"];
+$APEPATERNO = $_POST["cod"];
+$APEMATERNO = $_POST["cod"];
+$DNI = $_POST["cod"];
+$RUC = $_POST["cod"];
+$CORREO = $_POST["cod"];
+$TELEFONO = $_POST["cod"];
+$ESTADO = $_POST["cod"];
+$FECHA_REGISTRO = $_POST["cod"];
 
-$objN1 = new control();
-$result1 = $objN1->registrarRol($CODROL, $DESCRROL, $FLAGESTADO, $NOMROL);
+$objN1 = new ControlPersona();
+$result1 = $objN1->registrarPersona($ID_PERSONA, $NOMBRE, $APEPATERNO, $APEMATERNO, $DNI, $RUC, $CORREO, $TELEFONO, $ESTADO, $FECHA_REGISTRO);
 if ($result1) {
 echo " 
                 <script language='JavaScript' type='text/javascript'> 
